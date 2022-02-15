@@ -26,9 +26,9 @@ int main() {
 	readFile.open("ships.txt", ios::in);
 
 	if (readFile.is_open()) {
-		//This while loop reads from the file until
+		//This for loop reads from the file until
 		//the end of the file.
-		while(readFile.good()) {
+		for (int i = 0; i < 10; i++) {
 			//Local variables to be used to get the info 
 			//of the various ships from the file one ship 
 			//at a time.
@@ -59,4 +59,6 @@ int main() {
 		}
 		readFile.close();
 	}
+
+	
 }

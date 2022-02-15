@@ -1,0 +1,45 @@
+Theodore Roosevelt 
+Aircraft Carrier
+CVN 71
+5
+Abraham Lincoln
+Aircraft Carrier
+CVN 72
+5
+Kentucky
+Battleship
+BB 6
+4
+Oklahoma
+Batleship
+BB 37
+4
+McCampbell
+Frigate
+DDG 85
+3
+Rafael Peralta
+Frigate 
+DDG 115
+3
+Topeka
+Submarine
+SSN 754
+3
+Hampton
+Submarine
+SSN 767
+3
+12
+PT Boat
+PT 12
+2
+90
+PT Boat
+PT 90
+2
+
+
+
+
+
