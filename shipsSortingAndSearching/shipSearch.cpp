@@ -2,33 +2,33 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
-//"ship" datatype that will be used to make 
-//various ships from a file.
+//"ship" datatype that will be used to make various ships 
+//from a file.
 struct ship {
 	string name;
 	string type;
 	string serviceNum;
-	int size;
+	string size;
 };
 
-//This vector is made up of "ship" data types 
-//that will be added from a file and is 
-// needed to pass to the sorting functions.
-vector<ship> ships;
+//const for number of ships in file.
+const int NUM_OF_SHIPS = 10;
+//array of ships
+ship ships[NUM_OF_SHIPS];
+
 
 int main() {
-	//First, all of the data for each ship will
-	//be stored into a file and read from it to
-	//be stored into a vector.
+	//all data from each ship will be read from a file.
 	fstream readFile;
 	readFile.open("ships.txt", ios::in);
 
 	if (readFile.is_open()) {
 		//This for loop reads from the file until
 		//the end of the file.
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < NUM_OF_SHIPS; i++) {
 			//Local variables to be used to get the info 
 			//of the various ships from the file one ship 
 			//at a time.
@@ -44,21 +44,12 @@ int main() {
 			getline(readFile, shipServiceNum);
 			getline(readFile, shipSize);
 
-			//Storing values from the file onto a
-			//struct.
-			ship ship;
-			ship.name = shipName;
-			ship.type = shipType;
-			ship.serviceNum = shipServiceNum;
-			ship.size = stoi(shipSize);
-			//stoi() turns the string shipSize into an int.
+			ships[i].name = shipName;
+			ships[i].type = shipType;
+			ships[i].serviceNum = shipServiceNum;
+			ships[i].size = shipSize;
 
-			//struct is added to the vector of ships.
-			ships.push_back(ship);
-			
 		}
 		readFile.close();
 	}
-
-	
 }
