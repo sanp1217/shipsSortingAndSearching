@@ -19,6 +19,9 @@ const int NUM_OF_SHIPS = 10;
 //array of ships
 ship ships[NUM_OF_SHIPS];
 
+//function prototypes
+void showShips(ship[], int);
+
 
 int main() {
 	//all data from each ship will be read from a file.
@@ -53,3 +56,15 @@ int main() {
 		readFile.close();
 	}
 }
+
+
+void showShips(ship array[], int num) {
+	cout << left << setw(20) << "Ship Name" << setw(20) << "Type" << setw(20) << "Service Number" << setw(20) << "Size" << endl;
+	cout << string(70, '*') << endl;
+	for (int x = 0; x < num; x++) {
+		cout << left << setfill(' ')
+		<< setw(20) << array[x].name << setw(20) << array[x].type << setw(20) << array[x].serviceNum << setw(20) << array[x].size << endl;
+	}
+	cout << endl;
+}
+
