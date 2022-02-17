@@ -22,7 +22,8 @@ ship ships[NUM_OF_SHIPS];
 //function prototypes
 void sortByType(ship[], int);
 void showShips(ship[], int);
-int searchByName(ship[], int, string);
+int searchByNameOrType(ship[], int, string);
+int menu();
 
 
 int main() {
@@ -57,6 +58,7 @@ int main() {
 		}
 		readFile.close();
 	}
+	menu();
 }
 
 //Outputs ship info, spaced evenly
@@ -88,7 +90,7 @@ void sortByType(ship array[], int numOfShips) {
 	}
 }
 
-int searchByName(ship ships[], int elements, string nameToFind) {
+int searchByNameOrType(ship ships[], int elements, string nameToFind) {
 	int index = 0;
 	int position = -1;
 	bool found = false;
@@ -101,4 +103,20 @@ int searchByName(ship ships[], int elements, string nameToFind) {
 		index++;
 	}
 	return position;
+}
+
+int menu() {
+	int choice = 0;
+	cout << "Choose one of the following(enter a number): " << endl;
+	cout << string(30, '*') << endl;
+	cout << "1. Display ships.\n"
+		<< "2. Sort ships by type.\n"
+		<< "3. Search ships by name or type.\n"
+		<< "4. Quit program\n";
+	cin >> choice;
+	while (choice > 4 || choice < 1) {
+		cout << "Invalid choice. Try again.\n";
+		cin >> choice;
+	}
+	return choice;
 }
