@@ -22,6 +22,7 @@ ship ships[NUM_OF_SHIPS];
 //function prototypes
 void sortByType(ship[], int);
 void showShips(ship[], int);
+int searchByName(ship[], int, string);
 
 
 int main() {
@@ -56,7 +57,6 @@ int main() {
 		}
 		readFile.close();
 	}
-	
 }
 
 //Outputs ship info, spaced evenly
@@ -86,4 +86,19 @@ void sortByType(ship array[], int numOfShips) {
 		array[minIndex] = array[startScan];
 		array[startScan] = minValue;
 	}
+}
+
+int searchByName(ship ships[], int elements, string nameToFind) {
+	int index = 0;
+	int position = -1;
+	bool found = false;
+
+	while (index < elements && !found) {
+		if (ships[index].name == nameToFind) {
+			found = true;
+			position = index;
+		}
+		index++;
+	}
+	return position;
 }
