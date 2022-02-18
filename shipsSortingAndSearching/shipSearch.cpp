@@ -21,7 +21,8 @@ ship ships[NUM_OF_SHIPS];
 
 //function prototypes
 void sortByType(ship[], int);
-void showShips(ship[], int);
+void displayAll(ship[], int);
+void displaySingle(ship[], int);
 int searchByNameOrType(ship[], int, string);
 int menu();
 
@@ -58,18 +59,28 @@ int main() {
 		}
 		readFile.close();
 	}
-	menu();
+
+	displayAll(ships, NUM_OF_SHIPS);
 }
 
-//Outputs ship info, spaced evenly
-void showShips(ship array[], int numOfShips) {
+//Displays information for all ships. Pauses when it reaches
+//the fifth element and continues after user input.
+void displayAll(ship array[], int numOfShips) {
 	cout << left << setw(20) << "Ship Name" << setw(20) << "Type" << setw(20) << "Service Number" << setw(20) << "Size" << endl;
 	cout << string(70, '*') << endl;
 	for (int x = 0; x < numOfShips; x++) {
-		cout << left << setfill(' ')
-		<< setw(20) << array[x].name << setw(20) << array[x].type << setw(20) << array[x].serviceNum << setw(20) << array[x].size << endl;
+		//waits for user input
+		if (x == 5) {
+			system("pause");
+		}
+		cout << left << setw(20) << array[x].name << setw(20) << array[x].type << setw(20) << array[x].serviceNum << setw(20) << array[x].size << endl;
 	}
 	cout << endl;
+}
+
+//Displays ship info for a single ship.
+void displaySingle(ship array[], int elementToOutput) {
+	cout << array[elementToOutput].name << "  " << array[elementToOutput].type << "  " << array[elementToOutput].serviceNum << "  " << array[elementToOutput].size;
 }
 
 //sorts ships by type, alphabetically using selection sort.
@@ -90,13 +101,13 @@ void sortByType(ship array[], int numOfShips) {
 	}
 }
 
-int searchByNameOrType(ship ships[], int elements, string nameToFind) {
+int searchByNameOrType(ship ships[], int elements, string toFind) {
 	int index = 0;
 	int position = -1;
 	bool found = false;
 
 	while (index < elements && !found) {
-		if (ships[index].name == nameToFind) {
+		if (ships[index].name == toFind || ships[index].type == toFind) {
 			found = true;
 			position = index;
 		}

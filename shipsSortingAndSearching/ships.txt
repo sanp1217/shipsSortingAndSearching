@@ -1,4 +1,4 @@
-Theodore Roosevelt 
+Theodore Roosevelt
 Aircraft Carrier
 CVN 71
 5
@@ -23,7 +23,7 @@ Submarine
 SSN 754
 3
 Rafael Peralta
-Frigate 
+Frigate
 DDG 115
 3
 Abraham Lincoln
