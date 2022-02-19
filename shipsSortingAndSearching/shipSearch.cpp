@@ -59,8 +59,12 @@ int main() {
 		}
 		readFile.close();
 	}
-
-	displayAll(ships, NUM_OF_SHIPS);
+	//Displays the ship names to the user.
+	cout << "Ships: " << endl;
+	for (int i = 0; i < NUM_OF_SHIPS; i++) {
+		cout << ships[i].name << endl;
+	}
+	cout << "\n\n";
 }
 
 //Displays information for all ships. Pauses when it reaches
@@ -73,12 +77,13 @@ void displayAll(ship array[], int numOfShips) {
 		if (x == 5) {
 			system("pause");
 		}
-		cout << left << setw(20) << array[x].name << setw(20) << array[x].type << setw(20) << array[x].serviceNum << setw(20) << array[x].size << endl;
+		cout << left << setw(20) << array[x].name << setw(20) << array[x].type << setw(20) << array[x].serviceNum << setw(20) << array[x].size << "\n\n";
 	}
 	cout << endl;
 }
 
 //Displays ship info for a single ship.
+//Will be used when the user searches for a single ship.
 void displaySingle(ship array[], int elementToOutput) {
 	cout << array[elementToOutput].name << "  " << array[elementToOutput].type << "  " << array[elementToOutput].serviceNum << "  " << array[elementToOutput].size;
 }
@@ -101,6 +106,7 @@ void sortByType(ship array[], int numOfShips) {
 	}
 }
 
+
 int searchByNameOrType(ship ships[], int elements, string toFind) {
 	int index = 0;
 	int position = -1;
@@ -116,6 +122,8 @@ int searchByNameOrType(ship ships[], int elements, string toFind) {
 	return position;
 }
 
+//Menu for the user that will return the int value of 
+//the choice decided by user.
 int menu() {
 	int choice = 0;
 	cout << "Choose one of the following(enter a number): " << endl;
