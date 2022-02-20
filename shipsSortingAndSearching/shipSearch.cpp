@@ -23,7 +23,7 @@ ship ships[NUM_OF_SHIPS];
 void sortByType(ship[], int);
 void displayAll(ship[], int);
 void displaySingle(ship[], int);
-int searchByNameOrType(ship[], int, string);
+void searchByNameOrType(ship[], int, string);
 int menu();
 
 
@@ -64,7 +64,8 @@ int main() {
 	for (int i = 0; i < NUM_OF_SHIPS; i++) {
 		cout << ships[i].name << endl;
 	}
-	cout << "\n\n";
+	cout << "\n";
+
 }
 
 //Displays information for all ships. Pauses when it reaches
@@ -82,11 +83,13 @@ void displayAll(ship array[], int numOfShips) {
 	cout << endl;
 }
 
+
 //Displays ship info for a single ship.
 //Will be used when the user searches for a single ship.
 void displaySingle(ship array[], int elementToOutput) {
 	cout << array[elementToOutput].name << "  " << array[elementToOutput].type << "  " << array[elementToOutput].serviceNum << "  " << array[elementToOutput].size << "\n\n";
 }
+
 
 //sorts ships by type, alphabetically using selection sort.
 void sortByType(ship array[], int numOfShips) {
@@ -107,20 +110,26 @@ void sortByType(ship array[], int numOfShips) {
 }
 
 
-int searchByNameOrType(ship ships[], int elements, string toFind) {
+//To search through ships by name or type from user input:
+void searchByNameOrType(ship ships[], int elements, string toFind) {
 	int index = 0;
-	int position = -1;
-	bool found = false;
+	bool foundName = false;
 
-	while (index < elements && !found) {
-		if (ships[index].name == toFind || ships[index].type == toFind) {
-			found = true;
-			position = index;
+	while (index < elements && !foundName) {
+		if (ships[index].name == toFind) {
+			foundName = true;
+			displaySingle(ships, index);
+		}
+		//ships may be of the same type meaning that it is 
+		//best to cycle through the whole array which is 
+		//why a bool is not in here but is when searching for names.
+		if (ships[index].type == toFind) {
+			displaySingle(ships, index);
 		}
 		index++;
 	}
-	return position;
 }
+
 
 //Menu for the user that will return the int value of 
 //the choice decided by user.
@@ -131,7 +140,7 @@ int menu() {
 	cout << "1. Display ships.\n"
 		<< "2. Sort ships by type.\n"
 		<< "3. Search ships by name or type.\n"
-		<< "4. Quit program\n";
+		<< "4. Quit program.\n";
 	cin >> choice;
 	while (choice > 4 || choice < 1) {
 		cout << "Invalid choice. Try again.\n";
