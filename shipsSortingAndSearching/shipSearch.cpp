@@ -1,5 +1,4 @@
 #include <string>
-#include <vector>
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -33,8 +32,6 @@ int main() {
 	readFile.open("ships.txt", ios::in);
 
 	if (readFile.is_open()) {
-		//This for loop reads from the file until
-		//the end of the file.
 		for (int i = 0; i < NUM_OF_SHIPS; i++) {
 			//Local variables to be used to get the info 
 			//of the various ships from the file one ship 
@@ -42,9 +39,9 @@ int main() {
 			string shipName;
 			string shipType;
 			string shipServiceNum;
-			string shipSize;
 			//shipSize is a string for now because getline
 			//only accepts a string as a parameter.
+			string shipSize;
 
 			getline(readFile, shipName);
 			getline(readFile, shipType);
@@ -54,11 +51,13 @@ int main() {
 			ships[i].name = shipName;
 			ships[i].type = shipType;
 			ships[i].serviceNum = shipServiceNum;
+			//stoi() turns a string into an int.
 			ships[i].size = stoi(shipSize);
 
 		}
 		readFile.close();
 	}
+
 	//Displays the ship names to the user.
 	cout << "Ships: " << endl;
 	for (int i = 0; i < NUM_OF_SHIPS; i++) {
@@ -66,7 +65,7 @@ int main() {
 	}
 	cout << "\n";
 
-		bool done = false;
+	bool done = false;
 	while(!done) {
 		int choice = menu();
 		string shipInput;
@@ -81,7 +80,7 @@ int main() {
 			sortByType(ships, NUM_OF_SHIPS);
 			break;
 		case 3:
-			cout << "Enter a ship name or type:";
+			cout << "Enter a ship name or type: ";
 			cin.ignore();
 			getline(cin, shipInput);
 			searchByNameOrType(ships, NUM_OF_SHIPS, shipInput);
@@ -99,25 +98,25 @@ int main() {
 void displayAll(ship array[], int numOfShips) {
 	cout << left << setw(20) << "Ship Name" << setw(20) << "Type" << setw(20) << "Service Number" << setw(20) << "Size" << endl;
 	cout << string(70, '*') << endl;
-	for (int x = 0; x < numOfShips; x++) {
+	for (int i = 0; i < numOfShips; i++) {
 		//waits for user input
-		if (x == 5) {
+		if (i == 5) {
 			system("pause");
 		}
-		cout << left << setw(20) << array[x].name << setw(20) << array[x].type << setw(20) << array[x].serviceNum << setw(20) << array[x].size << "\n\n";
+		cout << left << setw(20) << array[i].name << setw(20) << array[i].type << setw(20) << array[i].serviceNum << setw(20) << array[i].size << "\n\n";
 	}
 	cout << endl;
 }
 
 
-//Displays ship info for a single ship.
-//Will be used when the user searches for a single ship.
+//Displays ship info for a single ship.Will be used
+//when the user searches for a ship name or type.
 void displaySingle(ship array[], int elementToOutput) {
 	cout << array[elementToOutput].name << "  " << array[elementToOutput].type << "  " << array[elementToOutput].serviceNum << "  " << array[elementToOutput].size << "\n\n";
 }
 
 
-//sorts ships by type, alphabetically using selection sort.
+//sorts ships by type using selection sort.
 void sortByType(ship array[], int numOfShips) {
 	int startScan, minIndex;
 	ship minValue;
@@ -136,7 +135,7 @@ void sortByType(ship array[], int numOfShips) {
 }
 
 
-//To search through ships by name or type from user input:
+//To search through ships by name or type from user input.
 void searchByNameOrType(ship ships[], int elements, string toFind) {
 	int index = 0;
 	bool foundName = false;
@@ -148,7 +147,7 @@ void searchByNameOrType(ship ships[], int elements, string toFind) {
 		}
 		//ships may be of the same type meaning that it is 
 		//best to cycle through the whole array which is 
-		//why a bool is not in here but is when searching for names.
+		//why a bool is not in here when a ship type is found.
 		if (ships[index].type == toFind) {
 			displaySingle(ships, index);
 		}
