@@ -11,7 +11,7 @@ struct ship {
 	string name;
 	string type;
 	string serviceNum;
-	string size;
+	int size;
 };
 
 //const for number of ships in file.
@@ -54,7 +54,7 @@ int main() {
 			ships[i].name = shipName;
 			ships[i].type = shipType;
 			ships[i].serviceNum = shipServiceNum;
-			ships[i].size = shipSize;
+			ships[i].size = stoi(shipSize);
 
 		}
 		readFile.close();
@@ -85,7 +85,7 @@ void displayAll(ship array[], int numOfShips) {
 //Displays ship info for a single ship.
 //Will be used when the user searches for a single ship.
 void displaySingle(ship array[], int elementToOutput) {
-	cout << array[elementToOutput].name << "  " << array[elementToOutput].type << "  " << array[elementToOutput].serviceNum << "  " << array[elementToOutput].size;
+	cout << array[elementToOutput].name << "  " << array[elementToOutput].type << "  " << array[elementToOutput].serviceNum << "  " << array[elementToOutput].size << "\n\n";
 }
 
 //sorts ships by type, alphabetically using selection sort.
