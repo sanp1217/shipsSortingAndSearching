@@ -161,12 +161,14 @@ void searchByNameOrType(ship ships[], int elements, string toFind) {
 int menu() {
 	int choice = 0;
 	cout << "Choose one of the following(enter a number): " << endl;
-	cout << string(30, '*') << endl;
+	cout << string(45, '*') << endl;
 	cout << "1. Display ships.\n"
 		<< "2. Sort ships by type.\n"
 		<< "3. Search ships by name or type.\n"
-		<< "4. Quit program.\n";
+		<< "4. Quit program.\n"
+		<< "Choice: ";
 	cin >> choice;
+	cout << "\n";
 	while (choice > 4 || choice < 1) {
 		cout << "Invalid choice. Try again.\n";
 		cin >> choice;
