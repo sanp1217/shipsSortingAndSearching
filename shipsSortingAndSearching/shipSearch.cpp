@@ -66,8 +66,8 @@ int main() {
 	}
 	cout << "\n";
 
-	bool done = false;
-	while (!done) {
+		bool done = false;
+	while(!done) {
 		int choice = menu();
 		string shipInput;
 		//Based on the choice picked from the menu, the
@@ -80,8 +80,17 @@ int main() {
 		case 2:
 			sortByType(ships, NUM_OF_SHIPS);
 			break;
+		case 3:
+			cout << "Enter a ship name or type:";
+			cin.ignore();
+			getline(cin, shipInput);
+			searchByNameOrType(ships, NUM_OF_SHIPS, shipInput);
+			break;
+		case 4:
+			done = true;
+			break;
 		}
-
+		
 	}
 }
 
