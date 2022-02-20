@@ -58,12 +58,6 @@ int main() {
 		readFile.close();
 	}
 
-	//Displays the ship names to the user.
-	cout << "Ships: " << endl;
-	for (int i = 0; i < NUM_OF_SHIPS; i++) {
-		cout << ships[i].name << endl;
-	}
-	cout << "\n";
 
 	bool done = false;
 	while(!done) {
@@ -80,6 +74,13 @@ int main() {
 			sortByType(ships, NUM_OF_SHIPS);
 			break;
 		case 3:
+			//Displays the ship names to the user.
+			cout << "Ships: " << endl;
+			for (int i = 0; i < NUM_OF_SHIPS; i++) {
+				cout << ships[i].name << endl;
+			}
+			cout << "\n";
+
 			cout << "Enter a ship name or type: ";
 			cin.ignore();
 			getline(cin, shipInput);
