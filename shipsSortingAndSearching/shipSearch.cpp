@@ -66,6 +66,23 @@ int main() {
 	}
 	cout << "\n";
 
+	bool done = false;
+	while (!done) {
+		int choice = menu();
+		string shipInput;
+		//Based on the choice picked from the menu, the
+		//cases on this switch statement will do what the 
+		//user picked.
+		switch (choice) {
+		case 1:
+			displayAll(ships, NUM_OF_SHIPS);
+			break;
+		case 2:
+			sortByType(ships, NUM_OF_SHIPS);
+			break;
+		}
+
+	}
 }
 
 //Displays information for all ships. Pauses when it reaches
